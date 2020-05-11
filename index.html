@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .btn{
+            position: relative;
+            height: 50px;
+            width: 40px;
+            border: 1px solid black;
+            margin: 2px;
+        }
+        .c{
+            height: 50px;
+            width: 86px; 
+        }
+        .calculator{
+            position: absolute;
+            margin-left: 300px;
+            margin-top: 100px;
+            background-color: blue;
+        }
+        textarea{
+            height: 38.8px;
+            width: 188px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="calculator">
+
+        <textarea id="conta"></textarea><br>
+        <table>
+            <tr>
+                <td colspan="2"><button class="btn c" id="C" value="C" onclick="deleteLast()">C</button></td>
+                <td colspan="2"><button class="btn c" id="CE" value="CE" onclick="deleteAll()">CE</button><br></td>
+            </tr>
+            <tr>
+                <td><button class="btn" id="7" value="7" onclick="toCalc(this.id)">7</button></td>
+                <td><button class="btn" id="8" value="8" onclick="toCalc(this.id)">8</button></td>
+                <td><button class="btn" id="9" value="9" onclick="toCalc(this.id)">9</button></td>
+                <td><button class="btn" id="/" value="/" onclick="toCalc(this.id)">/</button><br></td>
+            </tr>
+            <tr>
+                <td><button class="btn" id="4" value="4" onclick="toCalc(this.id)">4</button></td>
+                <td><button class="btn" id="5" value="5" onclick="toCalc(this.id)">5</button></td>
+                <td><button class="btn" id="6" value="6" onclick="toCalc(this.id)">6</button></td>
+                <td><button class="btn" id="*" value="*" onclick="toCalc(this.id)">*</button></td>
+            </tr>
+            <tr>
+                <td><button class="btn" id="1" value="1" onclick="toCalc(this.id)">1</button></td>
+                <td><button class="btn" id="2" value="2" onclick="toCalc(this.id)">2</button></td>
+                <td><button class="btn" id="3" value="3" onclick="toCalc(this.id)">3</button></td>
+                <td><button class="btn" id="+" value="+" onclick="toCalc(this.id)">+</button></td>
+            </tr>
+            <tr>
+                <td><button class="btn" id="0" value="1" onclick="toCalc(this.id)">0</button></td>
+                <td><button class="btn" id="-" value="-" onclick="toCalc(this.id)">-</button></td>
+                <td colspan="2"><button class="btn c" id="=" value="=" onclick="Calc()">=</button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        var txtConta = document.getElementById("conta")
+        var conta = ""
+        function toCalc(value){
+            console.log(value)
+            conta = txtConta.value
+            conta += value
+            txtConta.innerText = conta
+        }
+        function Calc(){
+            conta = eval(conta)
+            txtConta.innerText = conta
+            console.log(`Resultado: ${conta}`)
+            return conta
+        }
+        function deleteAll(){
+            conta = ""
+            txtConta.innerText = ""
+            
+        }
+    </script>
+</body>
+</html>
